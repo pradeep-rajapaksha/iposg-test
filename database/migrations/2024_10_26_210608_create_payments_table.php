@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('order_id');
+            $table->decimal('amount', total: 8, places: 2);
+            $table->integer('quantity');
+            $table->enum('method', ['card', 'cash']);
+            $table->boolean('status')->default(0);
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('order_id')->references('id')->on('orders');
         });
     }
 

@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->decimal('total_amount', total: 8, places: 2);
+            $table->boolean('status')->default(0);
             $table->timestamps();
+            $table->softDeletes();
+            
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
