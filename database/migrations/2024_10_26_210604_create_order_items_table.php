@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('product_id');
             $table->integer('quantity');
             $table->decimal('unit_price', total: 8, places: 2);
+            $table->decimal('total', total: 8, places: 2);
             $table->timestamps();
 
             $table->foreign('order_id')->references('id')->on('orders');

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('shipping', function (Blueprint $table) {
+        Schema::create('shippings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id');
             $table->string('recipient_name');
@@ -22,9 +22,8 @@ return new class extends Migration
             $table->string('postal_code');
             $table->string('country')->default('Sri Lanka');
             $table->string('phone');
-            $table->string('shipping_cost');
+            $table->decimal('shipping_cost', total: 8, places: 2);
             $table->string('tracking_number');
-            $table->enum('status', ['pending', 'processing', 'shipped', 'delivered', 'returned', 'canceled']);
             $table->timestamps();
             $table->softDeletes();
 
@@ -37,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('shipping');
+        Schema::dropIfExists('shippings');
     }
 };

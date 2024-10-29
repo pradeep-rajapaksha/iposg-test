@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->decimal('total_amount', total: 8, places: 2);
-            $table->boolean('status')->default(0);
+            $table->enum('status', ['pending', 'processing', 'dispatched', 'delivered', 'completed', 'returned', 'cancelled']);
             $table->timestamps();
             $table->softDeletes();
             

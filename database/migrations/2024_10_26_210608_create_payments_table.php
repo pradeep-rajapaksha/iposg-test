@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('order_id');
             $table->decimal('amount', total: 8, places: 2);
-            $table->integer('quantity');
             $table->enum('method', ['card', 'cash']);
             $table->boolean('status')->default(0);
             $table->timestamps();
